@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "DOM diff Extension",
+  "description": "",
+  "version": "2.0",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "tabs",
+    "http://*/*", "https://*/*"
+  ],
+  "background":
+  {
+    "scripts": ["dist/background-bundle.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["*"],
+    "js": [ "dist/inject_google_docs-bundle.js"]
+  }],
+
+  "browser_action": {
+      "default_title": "Открыть",
+      "default_icon": "48x48.png",
+      "default_popup": "popup.html"
+  }
+}
