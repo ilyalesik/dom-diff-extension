@@ -9,14 +9,9 @@
     "tabs",
     "http://*/*", "https://*/*"
   ],
-  "background":
-  {
-    "scripts": ["dist/background-bundle.js"],
-    "persistent": false
-  },
   "content_scripts": [{
-    "matches": ["*"],
-    "js": [ "dist/inject_google_docs-bundle.js"]
+    "matches": ["http://*/*", "https://*/*"],
+    "js": [ "dist/inject-bundle.js"]
   }],
 
   "browser_action": {
