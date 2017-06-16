@@ -38,6 +38,30 @@ function stop() {
     intervalId = undefined;
 }
 
+let observer;
+
+function startObserver() {
+    if (observer) {
+        observer.disconnect();
+        observer = undefined;
+        return;
+    }
+    var target = document;
+    observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            console.log(mutation);
+        });
+    });
+
+    var config = {subtree: true, attributes: true, childList: true, characterData: true };
+    observer.observe(target, config);
+}
+
+function stopObserver() {
+    observer.disconnect();
+    observer = undefined;
+}
+
 chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.method === 'start') {
@@ -47,6 +71,16 @@ chrome.extension.onMessage.addListener(
 
         if (request.method === 'stop') {
             stop();
+            sendResponse('');
+        }
+
+        if (request.method === 'startObserver') {
+            startObserver();
+            sendResponse('');
+        }
+
+        if (request.method === 'stopObserver') {
+            stopObserver();
             sendResponse('');
         }
 
