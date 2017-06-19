@@ -6,7 +6,8 @@ module.exports = {
     devtool: 'source-map',
     entry:   {
         inject: './src/sharing_inject.js',
-        popup: './src/popup.js'
+        popup: './src/popup.js',
+        background: './src/background.js',
     },
     module: {
         loaders: [

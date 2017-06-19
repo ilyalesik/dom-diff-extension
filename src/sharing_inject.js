@@ -62,8 +62,19 @@ function stopObserver() {
     observer = undefined;
 }
 
+function screenshot() {
+    const html = $('body').html();
+    console.log(html);
+    return html;
+}
+
 chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse) {
+        if (request.method === 'Screenshot') {
+            const html = screenshot();
+            sendResponse(html);
+        }
+
         if (request.method === 'start') {
             run();
             sendResponse('');
