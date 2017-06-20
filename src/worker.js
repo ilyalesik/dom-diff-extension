@@ -1,8 +1,11 @@
 var jsdiff = require('diff');
+var beautify_html = require('js-beautify').html;
 
 module.exports = function worker (self) {
     self.addEventListener('message', (event) => {
         let {nextHtml, prevHtml} = event.data;
+        nextHtml = beautify_html(nextHtml);
+        prevHtml = beautify_html(prevHtml);
         let diff = jsdiff.diffLines(prevHtml, nextHtml);
         let text = '';
         let colors = [];
