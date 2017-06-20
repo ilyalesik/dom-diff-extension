@@ -30,5 +30,6 @@
       },
       "description": "Screenshot"
     }
-  }
+  },
+  "web_accessible_resources": [ "worker-bundle.js"]
 }

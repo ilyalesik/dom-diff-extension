@@ -1,5 +1,9 @@
 import $ from 'jquery';
 var jsdiff = require('diff');
+var Worker = require("worker-loader?name=worker-bundle.js!./worker.js");
+
+
+
 
 let intervalId;
 function run() {
@@ -62,9 +66,14 @@ function stopObserver() {
     observer = undefined;
 }
 
+let prevHtml = '';
+
 function screenshot() {
     const html = $('body').html();
-    console.log(html);
+    var worker = new Worker();
+    worker.postMessage({nextHtml: html, prevHtml});
+
+    prevHtml = html;
     return html;
 }
 
