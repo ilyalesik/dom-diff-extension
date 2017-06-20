@@ -18,18 +18,18 @@
     "matches": ["http://*/*", "https://*/*"],
     "js": [ "dist/inject-bundle.js"]
   }],
-  "browser_action": {
-      "default_title": "Открыть",
-      "default_icon": "48x48.png",
-      "default_popup": "popup.html"
-  },
   "commands": {
     "Screenshot": {
       "suggested_key": {
         "default": "Ctrl+Shift+5"
       },
       "description": "Screenshot"
+    },
+    "ScreenshotPrepare": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+8"
+      },
+      "description": "Screenshot Prepare"
     }
-  },
-  "web_accessible_resources": [ "worker-bundle.js"]
+  }
 }

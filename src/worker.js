@@ -3,9 +3,7 @@ var jsdiff = require('diff');
 module.exports = function worker (self) {
     self.addEventListener('message', (event) => {
         let {nextHtml, prevHtml} = event.data;
-        console.log('start diff');
         let diff = jsdiff.diffLines(prevHtml, nextHtml);
-        console.log('end diff');
         let text = '';
         let colors = [];
         diff.forEach(function(part){
