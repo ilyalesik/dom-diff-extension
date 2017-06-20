@@ -11,12 +11,12 @@
   ],
   "background":
   {
-    "scripts": ["dist/background-bundle.js"],
+    "scripts": ["worker_proxy.js", "dist/background-bundle.js"],
     "persistent": false
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
-    "js": [ "dist/inject-bundle.js"]
+    "js": [ "worker_proxy.js", "dist/inject-bundle.js"]
   }],
   "browser_action": {
       "default_title": "Открыть",
@@ -31,5 +31,5 @@
       "description": "Screenshot"
     }
   },
-  "web_accessible_resources": [ "worker-bundle.js"]
+  "web_accessible_resources": [ "worker_proxy.html", "dist/worker-bundle.js"]
 }

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 var jsdiff = require('diff');
-var Worker = require("worker-loader?name=worker-bundle.js!./worker.js");
+//var Worker = require("worker-loader?name=worker-bundle.js!./worker.js");
 
 
 
@@ -70,7 +70,8 @@ let prevHtml = '';
 
 function screenshot() {
     const html = $('body').html();
-    var worker = new Worker();
+    var worker = new Worker(chrome.runtime.getURL('dist/worker-bundle.js'));
+    //var worker = new Worker();
     worker.postMessage({nextHtml: html, prevHtml});
 
     prevHtml = html;
