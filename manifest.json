@@ -1,10 +1,14 @@
 {
   "manifest_version": 2,
-
-  "name": "DOM diff Extension",
+  "name": "DOM diff",
   "description": "",
   "version": "2.0",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": [
     "tabs",
     "http://*/*", "https://*/*"
