@@ -1,9 +1,8 @@
 import $ from 'jquery';
 var jsdiff = require('diff');
-var Worker = require("worker-loader?name=worker-bundle.js!./worker.js");
 
-
-
+import work from 'webworkify-webpack';
+let w = work(require.resolve('./worker.js'));
 
 let intervalId;
 function run() {
@@ -70,8 +69,7 @@ let prevHtml = '';
 
 function screenshot() {
     const html = $('body').html();
-    var worker = new Worker();
-    worker.postMessage({nextHtml: html, prevHtml});
+    w.postMessage({nextHtml: html, prevHtml});
 
     prevHtml = html;
     return html;
